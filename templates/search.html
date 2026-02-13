@@ -1,27 +1,68 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-  <div class="row mb-2">
+<div class="container mt-4">
 
-{% if blogs %}
-    {% for post in blogs %}
-    <div class="col-md-6">
-      <div class="card border-0" >
-        <div class="card-body">
-          <h3><a href="{% url 'blogs' post.slug %}" class="text-dark"> {{post.title}}</a></h3>
-          <small class="mb-1 text-muted">{{post.created_at | timesince}} ago | {{post.author}}</small>
-          <p class="card-text"> {{post.short_description | truncatewords:10}}</p>
+    <div class="row">
+
+        {% if blogs %}
+
+            {% for post in blogs %}
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <!-- Title -->
+                        <h5 class="card-title font-weight-bold">
+                            <a href="{% url 'blogs' post.slug %}"
+                               class="text-dark text-decoration-none">
+                                {{ post.title }}
+                            </a>
+                        </h5>
+
+                        <!-- Meta Info -->
+                        <small class="text-muted mb-2">
+                            <i class="fa fa-clock-o"></i>
+                            {{ post.created_at|timesince }} ago
+                            &nbsp; | &nbsp;
+                            <i class="fa fa-user"></i>
+                            {{ post.author }}
+                        </small>
+
+                        <!-- Description -->
+                        <p class="card-text text-muted">
+                            {{ post.short_description|truncatewords:15 }}
+                        </p>
+
+                        <!-- Read More Button -->
+                        <a href="{% url 'blogs' post.slug %}"
+                           class="btn btn-sm btn-outline-warning mt-auto align-self-start">
+                            Read More →
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+        <!-- Empty State -->
+        <div class="col-12">
+            <div class="alert alert-warning text-center shadow-sm">
+                <i class="fa fa-folder-open"></i>
+                No Posts Found
+            </div>
         </div>
-      </div>
+
+        {% endif %}
+
     </div>
-     {% endfor %}
-     {%else%}
-     No Posts Found
-{% endif %}
 
-  </div>
-
-
+</div>
 
 {% endblock %}

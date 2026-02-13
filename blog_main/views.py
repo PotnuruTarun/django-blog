@@ -22,7 +22,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('login')
     else:    
         form = RegistrationForm()
     context = {
@@ -36,7 +36,7 @@ def login(request):
         if form.is_valid():
             user = form.get_user()
             auth.login(request, user)
-            return redirect('home')
+            return redirect('dashboard')
 
     else:
         form = AuthenticationForm()

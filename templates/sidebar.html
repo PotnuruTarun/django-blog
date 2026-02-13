@@ -1,0 +1,34 @@
+<div class="col-md-3">
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+
+            <div class="nav flex-column nav-pills">
+
+                <a href="{% url 'dashboard' %}"
+                   class="nav-link rounded-0 text-dark
+                   {% if request.path == '/dashboard/' %} active bg-warning text-white {% endif %}">
+                    <i class="fa fa-tachometer"></i> Dashboard
+                </a>
+
+                <a href="{% url 'categories' %}"
+                   class="nav-link rounded-0 text-dark
+                   {% if request.path == '/dashboard/categories/' %} active bg-warning text-white {% endif %}">
+                    <i class="fa fa-folder"></i> Categories
+                </a>
+
+                <a href="{% url 'all_posts' %}"
+                   class="nav-link rounded-0 text-dark
+                   {% if request.path == '/dashboard/all_posts' %} active bg-warning text-white {% endif %}">
+                    <i class="fa fa-file-text"></i> Posts
+                </a>
+
+                <a href="{% url 'logout' %}"
+                   class="nav-link rounded-0 text-danger">
+                    <i class="fa fa-sign-out"></i> Logout
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>

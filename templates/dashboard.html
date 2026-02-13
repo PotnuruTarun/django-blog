@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Logged User -->
+   
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        {% include 'sidebar.html' %}
+
+        <!-- Main Dashboard -->
+        <div class="col-md-9">
+             <div class="mb-4">
+        <div class="alert alert-light shadow-sm d-flex justify-content-between align-items-center">
+            <span class="font-weight-bold">
+                <i class="fa fa-user-circle"></i> Logged in as {{ user }}
+            </span>
+        </div>
+    </div>
+            <div class="row">
+
+                <!-- Categories Card -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm border-0 text-center h-100">
+
+                        <div class="card-header bg-warning text-white text-uppercase font-weight-bold">
+                            <i class="fa fa-folder"></i> All Categories
+                        </div>
+
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <h2 class="font-weight-bold mb-0">
+                                {{ category_count }}
+                            </h2>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Posts Card -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm border-0 text-center h-100">
+
+                        <div class="card-header bg-dark text-white text-uppercase font-weight-bold">
+                            <i class="fa fa-file-text"></i> All Posts
+                        </div>
+
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <h2 class="font-weight-bold mb-0">
+                                {{ blogs_count }}
+                            </h2>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
